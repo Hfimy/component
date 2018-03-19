@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 
+//这是之前简单的，后面更新的见demo
 export default class UploadFile extends PureComponent {
     state = {
         name: '',
@@ -40,12 +41,12 @@ export default class UploadFile extends PureComponent {
             //注：onload是异步函数，此处需独立处理
             reader.onload = function (e) {
                 preview = <textarea value={this.result} readOnly></textarea>
-                self.setState({ path: file.name, data: file, preview: preview ,progress:0})
+                self.setState({ path: file.name, data: file, preview: preview, progress: 0 })
             }
             return;
         }
 
-        this.setState({ path: file.name, data: file, preview: preview ,progress:0})
+        this.setState({ path: file.name, data: file, preview: preview, progress: 0 })
     }
 
     // 上传文件
@@ -94,7 +95,7 @@ export default class UploadFile extends PureComponent {
     }
 
     componentWillUnmount() {
-        this.xhr.upload.removeEventListener('progress',this.uploadProgress,false)
+        this.xhr.upload.removeEventListener('progress', this.uploadProgress, false)
     }
 
     //关闭模态框
@@ -123,7 +124,7 @@ export default class UploadFile extends PureComponent {
                 </div>
                 <div className='progressWrap'>
                     <div className='progress' style={{ width: `${this.state.progress}%` }} />
-                    <span className='progress-text' style={{left:`${this.state.progress}%`}}>{this.state.progress}%</span>
+                    <span className='progress-text' style={{ left: `${this.state.progress}%` }}>{this.state.progress}%</span>
                 </div>
                 <button className='primary upload' onClick={this.upload}>上传</button>
                 <button className='primary cancel' onClick={this.cancel}>取消</button>
